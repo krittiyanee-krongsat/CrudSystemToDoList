@@ -1,6 +1,9 @@
 import { useState ,useEffect } from 'react'
 import './App.css'
 
+//Components
+import Task from './components/Task'
+
 function App() {
   // state เก็บรายการโพสต์ทั้งหมดที่ดึงมาจาก API
   const [posts, setPosts] = useState([])
@@ -22,7 +25,13 @@ function App() {
 
   return (
     <div>
-      <h1>Hello</h1>
+      {/* Component สำหรับแสดงรายการ task */}
+      <Task
+        currentPost={currentPost}
+        posts={posts}
+        setPosts={setPosts}
+        setCurrentPosts={setCurrentPost}
+      />
     </div>
   )
 }
