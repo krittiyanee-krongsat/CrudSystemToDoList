@@ -4,6 +4,7 @@ import axios from 'axios'
 
 //Components
 import Task from './components/Task'
+import Create from './components/Create'
 
 function App() {
   // state เก็บรายการโพสต์ทั้งหมดที่ดึงมาจาก API
@@ -25,14 +26,33 @@ function App() {
   }, []) // [] = ทำงานแค่ครั้งเดียวตอน mount
 
   return (
-    <div>
-      {/* Component สำหรับแสดงรายการ task */}
-      <Task
-        currentPost={currentPost}
-        posts={posts}
-        setPosts={setPosts}
-        setCurrentPosts={setCurrentPost}
+    <div className='flex flex-col items-center mt-24'>
+      {/* แสดงรูป gif ด้านบนของ task card */}
+      <img
+        src='/gif/Coffee.gif'
+        className='flex flex-col items-center pb-2.5'
       />
+        {/* กล่องหลักของ task card */}
+        <div className='task-card'>
+          {/* ส่วน header ของ card */}
+          <div className='task-card-header'>
+            <span className='task-card-title'>Task📋</span>
+            {/* Component สำหรับเพิ่ม task */}
+            <Create
+              currentPost={currentPost}
+              posts={posts}
+              setPosts={setPosts}
+              setCurrentPosts={setCurrentPost}
+            />
+          </div>
+            {/* Component สำหรับแสดงรายการ task */}
+            <Task
+              currentPost={currentPost}
+              posts={posts}
+              setPosts={setPosts}
+              setCurrentPosts={setCurrentPost}
+            />
+          </div>
     </div>
   )
 }
