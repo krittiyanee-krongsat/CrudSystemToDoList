@@ -222,4 +222,4 @@ cd client && npm run dev
 ---
 
 ## 📸 Screenshots
-<img width="457" height="457" alt="Menu" src="https://github.com/user-attachments/assets/49c19a3d-c480-45fb-882d-fb9edec8a5b7" />
+<img width="300" height="300" alt="Menu" src="https://github.com/user-attachments/assets/49c19a3d-c480-45fb-882d-fb9edec8a5b7" />
