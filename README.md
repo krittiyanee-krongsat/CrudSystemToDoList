@@ -11,7 +11,6 @@ A full-stack To Do List application built with the **MERN Stack** (MongoDB, Expr
 | Frontend   | React (Vite) + Tailwind CSS          |
 | Backend    | Node.js + Express.js                 |
 | Database   | MongoDB Atlas (via Mongoose)         |
-| Others     | CORS, dotenv                         |
 
 ---
 
