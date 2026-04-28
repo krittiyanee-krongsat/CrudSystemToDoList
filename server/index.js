@@ -10,7 +10,7 @@ const postRoutes = require('./routes/posts')
 
 // ตั้งค่า DNS server เพื่อแก้ปัญหาการเชื่อมต่อ MongoDB ในบางสภาพแวดล้อม
 require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
-dotenv.config()
+require("dotenv").config()
 const MONGO_URI = process.env.MONGO_URI
 
 app.use(express.json())
