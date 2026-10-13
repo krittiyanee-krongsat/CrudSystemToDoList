@@ -14,7 +14,9 @@ require("dotenv").config()
 const MONGO_URI = process.env.MONGO_URI
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: ["https://crud-system-to-do-list.vercel.app/", "http://localhost:5173"],
+}))
 
 //Routes
 app.use('/posts', postRoutes)
