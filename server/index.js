@@ -15,7 +15,7 @@ const MONGO_URI = process.env.MONGO_URI
 
 app.use(express.json())
 app.use(cors({
-  origin: ["https://crud-system-to-do-list.vercel.app/", "http://localhost:5173"],
+  origin: ["https://crud-system-to-do-list.vercel.app", "http://localhost:5173"],
 }))
 
 //Routes
