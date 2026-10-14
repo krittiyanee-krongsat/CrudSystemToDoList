@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/posts": {
-        target: ["https://crud-system-to-do-list-g73y.vercel.app","http://localhost:5000"],
+        target: "http://localhost:5000",
         secure: false,
       },
     },
