@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import api from "./api.js"
+import api from "../api.js"
 
 // Component สำหรับสร้าง task ใหม่
 function Create({ setPosts }) {
