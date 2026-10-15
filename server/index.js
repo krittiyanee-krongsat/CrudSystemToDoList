@@ -9,7 +9,10 @@ const cors = require('cors')
 const postRoutes = require('./routes/posts')
 
 // ตั้งค่า DNS server เพื่อแก้ปัญหาการเชื่อมต่อ MongoDB ในบางสภาพแวดล้อม
-require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
+//require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"]);
+if (process.env.NODE_ENV !== 'production') {
+  require("node:dns/promises").setServers(["1.1.1.1", "8.8.8.8"])
+}
 require("dotenv").config()
 const MONGO_URI = process.env.MONGO_URI
 
@@ -23,7 +26,7 @@ app.use('/posts', postRoutes)
 
 //เชื่อมต่อฐานข้อมูล
 mongoose
-    .connect(MONGO_URI)
+    .connect(MONGO_URI, { serverSelectionTimeoutMS: 5000 })
     .then(() => console.log('Connecting to database successfully...'))
     .catch(error => console.log(error.message))
 
@@ -37,7 +40,13 @@ app.get('/api/test', (req, res) => {
     res.send('Hello from the server!')
 })
 
-// เริ่มต้น server และรับฟัง request ที่ PORT ที่กำหนด
+/*// เริ่มต้น server และรับฟัง request ที่ PORT ที่กำหนด
 app.listen(PORT, () => {
     console.log('Server is running...')
-})
+})*/
+
+if (require.main === module) {
+  app.listen(PORT, () => console.log('Server is running...'))
+}
+
+module.exports = app
