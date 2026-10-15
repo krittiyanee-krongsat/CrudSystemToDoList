@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import api from "../api.js"
 
 function Task({ posts, setPosts }) {
     // เก็บข้อมูลโพสต์ที่กำลังถูกแก้ไข
@@ -18,16 +18,16 @@ function Task({ posts, setPosts }) {
 
     // ลบ task ตาม id
     const handleDelete = async (id) => {
-        await axios.delete(`/posts/${id}`) // ส่งคำขอลบไปที่ backend
-        const { data } = await axios.get('/posts') // ดึงข้อมูลใหม่หลังลบเสร็จ
+        await api.delete(`/posts/${id}`) // ส่งคำขอลบไปที่ backend
+        const { data } = await api.get('/posts') // ดึงข้อมูลใหม่หลังลบเสร็จ
         setPosts(data) // อัปเดต state posts
         setEditingPost(null) // ปิด popup
     }
 
     // บันทึกข้อความ task ที่แก้ไข
     const handleSave = async () => {
-        await axios.patch(`/posts/${editingPost._id}`, { content: editContent }) // อัปเดต content
-        const { data } = await axios.get('/posts') // ดึงข้อมูลล่าสุด
+        await api.patch(`/posts/${editingPost._id}`, { content: editContent }) // อัปเดต content
+        const { data } = await api.get('/posts') // ดึงข้อมูลล่าสุด
         setPosts(data) // อัปเดต state posts
         setEditingPost(null) // ปิด popup
     }
