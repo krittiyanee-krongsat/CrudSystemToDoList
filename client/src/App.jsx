@@ -6,6 +6,11 @@ import axios from 'axios'
 import Task from './components/Task'
 import Create from './components/Create'
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
+axios.get(`${API_URL}/posts`)
+// post, put, delete ก็เหมือนกัน เช่น axios.post(`${API_URL}/posts`, data)
+
 function App() {
   // state เก็บรายการโพสต์ทั้งหมดที่ดึงมาจาก API
   const [posts, setPosts] = useState([])

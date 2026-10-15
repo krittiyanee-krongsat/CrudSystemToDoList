@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       "/posts": {
-        target: "https://crud-system-to-do-list.vercel.app",
+        target: "https://crudsystemtodolist.onrender.com",
         secure: false,
       },
     },
