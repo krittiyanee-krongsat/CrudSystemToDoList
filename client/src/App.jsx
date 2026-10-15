@@ -1,15 +1,10 @@
 import { useState ,useEffect } from 'react'
 import './App.css'
-import axios from 'axios'
+import api from "./api.js"
 
 //Components
 import Task from './components/Task'
 import Create from './components/Create'
-
-const API_URL = import.meta.env.VITE_API_URL || "";
-
-axios.get(`${API_URL}/posts`)
-// post, put, delete ก็เหมือนกัน เช่น axios.post(`${API_URL}/posts`, data)
 
 function App() {
   // state เก็บรายการโพสต์ทั้งหมดที่ดึงมาจาก API
@@ -21,7 +16,7 @@ function App() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const{ data } = await axios.get('/posts')
+        const{ data } = await api.get('/posts')
         setPosts(data) // บันทึกข้อมูลโพสต์ลงใน state
       } catch(error) {
         console.error("Error fetching posts:", error) // แสดง error ถ้าดึงข้อมูลไม่สำเร็จ
