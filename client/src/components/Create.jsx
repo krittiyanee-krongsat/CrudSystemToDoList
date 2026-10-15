@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useState } from 'react'
+import api from "./api.js"
 
 // Component สำหรับสร้าง task ใหม่
 function Create({ setPosts }) {
@@ -14,8 +14,8 @@ function Create({ setPosts }) {
 
     // ฟังก์ชันสำหรับบันทึก task ใหม่
     const handleSubmit = async () => {
-        await axios.post('/posts', { content }) // ส่งข้อมูลไป backend เพื่อสร้าง task
-        const { data } = await axios.get('/posts') // ดึงรายการ posts ใหม่ทั้งหมด
+        await api.post('/posts', { content }) // ส่งข้อมูลไป backend เพื่อสร้าง task
+        const { data } = await api.get('/posts') // ดึงรายการ posts ใหม่ทั้งหมด
         setPosts(data) // อัปเดต state ของ posts
         setContent('') // ล้างค่า input
         setIsOpen(false) // ปิด popup
